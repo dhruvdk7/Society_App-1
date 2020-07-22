@@ -1,5 +1,6 @@
 package com.example.demo.society_app;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -45,19 +46,12 @@ public class mem_register extends AppCompatActivity {
 
         emailt = (EditText)findViewById(R.id.edit_text1);
         passwordt = (EditText)findViewById(R.id.edit_text2);
-        f_name = (EditText)findViewById(R.id.f_name);
-        s_name = (EditText)findViewById(R.id.s_name);
-        number = (EditText)findViewById(R.id.number);
-        address = (EditText)findViewById(R.id.address);
-        signin = (Button)findViewById(R.id.sign_up);
         register = (Button)findViewById(R.id.register_button);
         mAuth = FirebaseAuth.getInstance();
-
-//        fstore = FirebaseFirestore.getInstance();
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String email = emailt.getText().toString();
+                String email = emailt.getText().toString();
                 String password = passwordt.getText().toString();
                 if(email.isEmpty())
                 {
@@ -81,46 +75,12 @@ public class mem_register extends AppCompatActivity {
                             if(task.isSuccessful())
                             {
                                 Toast.makeText(mem_register.this,"Sign in successful",Toast.LENGTH_SHORT).show();
-//                                userId = mAuth.getCurrentUser().getUid();
-//                                DocumentReference documentReference = fstore.collection("users").document(userId);
-//                                Map<String,Object> user = new HashMap<>();
-//                                user.put("f_name",f_name);
-//                                user.put("s_name",s_name);
-//                                user.put("number",number);
-//                                user.put("address",address);
-//                                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                    @Override
-//                                    public void onSuccess(Void aVoid) {
-//                                        Log.d(TAG,"Information Stored");
-//                                       // Log.d(Tag,"");
-//                                    }
-//                                });
-//                                startActivity(new Intent(mem_register.this,home.class));
-                                FirebaseUser user=mAuth.getCurrentUser();
-                                String uid=user.getUid();
-                                dataRef= FirebaseDatabase.getInstance().getReference().child(uid).child("member1");
-                               first=f_name.getText().toString();
-                               second=s_name.getText().toString();
-                               no=number.getText().toString();
-                                        dataRef.child("Firstname").setValue(first);
-                                        dataRef.child("second").setValue(second);
-                                        dataRef.child("number").setValue(no).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if(task.isSuccessful()){
-                                                    Toast.makeText(mem_register.this,"successfully added",Toast.LENGTH_SHORT).show();
-                                                }
-                                                else{
-                                                    Toast.makeText(mem_register.this,"unsuccessfully added",Toast.LENGTH_SHORT).show();
-
-                                                }
-                                            }
-                                        });
+                                startActivity(new Intent(mem_register.this,MainActivity.class));
                             }
                             else
                             {
-                                Toast.makeText(mem_register.this,"Sign in unsuccessful",Toast.LENGTH_SHORT).show();
-                                //startActivity(new Intent(registeration.this,MainActivity.class));
+                                Toast.makeText(mem_register.this,"Sign in successful",Toast.LENGTH_SHORT).show();
+                               // startActivity(new Intent(registeration.this,MainActivity.class));
                             }
                         }
                     });

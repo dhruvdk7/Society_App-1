@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -12,7 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
     private ImageView logo;
 
-    long SPLASH_TIMEOUT=4000;
+    long splashTimeOut=4000;
     Thread thread;
     FirebaseAuth firebaseAuth;
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try{
-                    Thread.sleep(SPLASH_TIMEOUT);
+                    Thread.sleep(splashTimeOut);
                     if (firebaseUser != null){
                         Intent i = new Intent(MainActivity.this, home.class);
                         startActivity(i);
@@ -56,15 +57,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       // logo = (ImageView) findViewById(R.id.logo);
-            /*new Handler().postDelayed(new Runnable() {
+       logo = (ImageView) findViewById(R.id.logo);
+            new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent i = new Intent(Splash_Screen.this, MainActivity.class);
+                    Intent i = new Intent(MainActivity.this, home.class);
                     startActivity(i);
                     finish();
                 }
             }, splashTimeOut);
-*/
+
     }
 }

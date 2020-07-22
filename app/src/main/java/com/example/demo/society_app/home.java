@@ -31,6 +31,15 @@ public class home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        CardView card3 = (CardView) findViewById(R.id.contacts);
+
+        card3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home.this,contacts.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

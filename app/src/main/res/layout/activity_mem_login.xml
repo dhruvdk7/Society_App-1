@@ -8,8 +8,9 @@
     tools:context=".mem_login">
 
     <ImageView
-        android:layout_width="210dp"
-        android:layout_height="210dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
         />
 
